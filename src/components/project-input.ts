@@ -1,7 +1,7 @@
-import { Component } from "./base-component.js";
-import { Validatable, validate } from "../util/validation.js";
-import { autobind } from "../decorators/autobind.js";
-import { projectState } from "../state/project-state.js";
+import { Component } from "./base-component";
+import { Validatable, validate } from "../util/validation";
+import { autobind } from "../decorators/autobind";
+import { projectState } from "../state/project-state";
 
 // ProjectInput Class
 export class ProjectInput extends Component<HTMLDivElement, HTMLFormElement> {
@@ -44,7 +44,7 @@ export class ProjectInput extends Component<HTMLDivElement, HTMLFormElement> {
       value: +enteredPeople,
       required: true,
       min: 0,
-      max: 7,
+      max: 20,
     };
 
     if (
@@ -52,7 +52,7 @@ export class ProjectInput extends Component<HTMLDivElement, HTMLFormElement> {
       !validate(descriptionValidatable) ||
       !validate(peopleValidatable)
     ) {
-      alert("Invalid Input , please try again !");
+      alert("Invalid Input,Please Try Again !");
       return;
     } else {
       return [enteredTitle, enteredDescription, +enteredPeople];

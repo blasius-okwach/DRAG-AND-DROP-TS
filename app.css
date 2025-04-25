@@ -20,6 +20,7 @@ textarea {
 
 label {
   font-weight: bold;
+  font-size: 1.3rem;
 }
 
 input,
@@ -27,17 +28,32 @@ textarea {
   font: inherit;
   padding: 0.2rem 0.4rem;
   width: 100%;
-  max-width: 35rem;
+  height: 3rem;
+  max-width: 32rem;
   border: 1px solid #ccc;
+  border-radius: 0.6rem;
+
+  box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3);
+  transition: 300ms ease-in-out;
+}
+
+#description {
+  height: 6rem;
+}
+
+::placeholder {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 input:focus,
 textarea:focus {
   outline: none;
-  background: #fff5f9;
+  background: #ffe3ee;
+  border: 1.5px solid #ff0062;
 }
 
-button {
+/* button {
   font: inherit;
   background: #ff0062;
   border: 1px solid #ff0062;
@@ -56,6 +72,59 @@ button:hover,
 button:active {
   background: #a80041;
   border-color: #a80041;
+} */
+
+/* From Uiverse.io by zanina-yassine */
+button {
+  min-width: 120px;
+
+  position: relative;
+  cursor: pointer;
+
+  padding: 12px 17px;
+  border: 0;
+  border-radius: 7px;
+
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  background: radial-gradient(
+    ellipse at bottom,
+    rgba(255, 0, 98, 0.562) 0%,
+    rgba(255, 0, 98, 0.893) 45%
+  );
+
+  color: rgb(255, 255, 255, 0.66);
+
+  transition: all 1s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+button::before {
+  content: "";
+  width: 70%;
+  height: 1px;
+
+  position: absolute;
+  bottom: 0;
+  left: 15%;
+
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  opacity: 0.2;
+
+  transition: all 1s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+button:hover {
+  color: rgb(255, 255, 255, 1);
+  transform: scale(1.1) translateY(-3px);
+}
+
+button:hover::before {
+  opacity: 1;
 }
 
 /* form {
@@ -69,8 +138,13 @@ button:active {
   margin: 1rem;
   border: 1px solid #ff0062;
   width: calc(70% - 1rem);
+  min-height: 14rem;
 
   margin-left: calc(16% - 1.2rem);
+  border-radius: 18px;
+  background: #e0e0e0;
+  box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
+  z-index: 999;
 }
 
 .projects header {
@@ -79,6 +153,9 @@ button:active {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  border-radius: 14px;
+  overflow: hidden;
 }
 
 #finished-projects {
@@ -106,6 +183,8 @@ button:active {
   margin: 1rem;
 
   background-color: white;
+
+  border-radius: 14px;
 }
 
 .projects li h2 {
@@ -113,8 +192,24 @@ button:active {
   margin: 0.5rem 0;
 }
 
+.project_icons {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  gap: 6px;
+}
+
+.icons {
+  max-width: 24px;
+  /* max-height: 24px; */
+  stroke: #ff0062;
+}
+
 #finished-projects li h2 {
   color: #0044ff;
+}
+#finished-projects li .icons {
+  stroke: #0044ff;
 }
 
 .projects li h3 {
@@ -138,11 +233,13 @@ button:active {
   margin: 1rem;
   padding: 1rem;
   border: 1px solid #ff0062;
+  border-radius: 0.6rem;
   background: #f7f7f7;
 }
 
 .form-control {
   display: flex;
+  gap: 0;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -158,9 +255,13 @@ button:active {
 /* MEDIA QUERIES */
 @media (max-width: 34em) {
   .projects {
-    width: 100%;
+    width: 100vw;
     margin-left: 0;
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+
+  .projects header {
+    max-width: 100%;
   }
 }
